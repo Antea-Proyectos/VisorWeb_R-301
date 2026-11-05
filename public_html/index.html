@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Los textos de la página están en js/GlobalNames.js (atributos data-gn) -->
+    <title></title>
+
+    <!-- Librería del mapa (Leaflet) y agrupación de puntos (MarkerCluster) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="css/visor.css">
+</head>
+<body>
+    <header id="cabecera">
+        <h1 data-gn="TITULO_CABECERA"></h1>
+        <span id="fecha-json" data-gn="FECHA_JSON_VACIA"></span>
+    </header>
+
+    <div id="contenedor">
+        <aside id="panel">
+            <section>
+                <h2 data-gn="TITULO_FILTROS"></h2>
+                <label for="filtro-via" data-gn="ETIQUETA_VIA"></label>
+                <select id="filtro-via"></select>
+                <p id="info-via"></p>
+
+                <label data-gn="ETIQUETA_PK"></label>
+                <div class="fila">
+                    <input id="filtro-pk-desde" type="number" step="any" data-gn-placeholder="PK_DESDE">
+                    <input id="filtro-pk-hasta" type="number" step="any" data-gn-placeholder="PK_HASTA">
+                </div>
+
+                <label for="filtro-velocidad" data-gn="ETIQUETA_VELOCIDAD"></label>
+                <select id="filtro-velocidad"></select>
+
+                <label class="check"><input id="filtro-fuera" type="checkbox"> <span data-gn="SOLO_FUERA_ESPANA"></span></label>
+
+                <div class="fila">
+                    <button id="btn-aplicar" class="principal" data-gn="BOTON_APLICAR"></button>
+                    <button id="btn-limpiar" data-gn="BOTON_LIMPIAR"></button>
+                </div>
+                <p id="contador" data-gn="CONTADOR_VACIO"></p>
+            </section>
+
+            <section>
+                <h2 data-gn="TITULO_BUSCAR"></h2>
+                <div class="fila">
+                    <input id="buscar-id" type="number" data-gn-placeholder="BUSCAR_EJEMPLO">
+                    <button id="btn-buscar" data-gn="BOTON_BUSCAR"></button>
+                </div>
+                <p id="mensaje-busqueda"></p>
+            </section>
+
+            <section>
+                <h2 data-gn="TITULO_LEYENDA"></h2>
+                <div id="leyenda"></div>
+            </section>
+
+            <section>
+                <h2 data-gn="TITULO_RESUMEN"></h2>
+                <div id="resumen"></div>
+            </section>
+
+            <section>
+                <button id="btn-exportar" data-gn="BOTON_EXPORTAR"></button>
+            </section>
+        </aside>
+
+        <main id="mapa"></main>
+    </div>
+
+    <div id="cargando" data-gn="CARGANDO"></div>
+
+    <!-- Orden importante: 1) librerías, 2) textos, 3) datos, 4) lógica del visor -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="js/GlobalNames.js"></script>
+    <script src="data/senales_visor.js"></script>
+    <script src="js/visor.js"></script>
+</body>
+</html>
